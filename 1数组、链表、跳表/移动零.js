@@ -9,7 +9,18 @@
 // 尽量减少操作次数。
 
 // 思路
- 
+var moveZeroes2 = function(nums) {
+    let filter = nums.filter(item=>item!=0)
+    let count = nums.length - filter.length
+    for(let i=0;i<count;i++){
+        filter.push(0)
+    }
+    nums.splice(0,nums.length)
+    nums.push(...filter)
+    console.log(nums)
+}
+
+
 var moveZeroes = function(nums) {
     var j = 0;
     for(var i=0;i<nums.length;i++){
@@ -39,3 +50,21 @@ var moveZeroes = function(nums) {
         }
     }
 }
+
+
+var moveZeroes = function(nums) {
+    let count = 0;
+    let length = nums.length;
+    for (let i = 0; i < length; i++) {
+        if (nums[i] == 0) {
+            count++;
+        } else if (count > 0) {
+            nums[i - count] = nums[i];
+        }
+    }
+    while (count > 0) {
+        nums[length - count] = 0;
+        count--;
+    }
+
+};
