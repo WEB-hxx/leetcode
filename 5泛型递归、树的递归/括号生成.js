@@ -18,4 +18,21 @@ var generateParenthesis = function(n) {
    
     return res;
 }
-generateParenthesis(3)
+
+var generateParenthesis = function(n) {
+    let result = []
+    var _generate = function(left, right, n, s) {
+        if(left===n && right===n) { 
+            result.push(s)  
+            return     
+        }
+        if(left < n) {
+            _generate(left+1, right, n, s + '(')
+        }
+        if(left > right){
+            _generate(left, right+1, n, s + ')')
+        }
+    }
+   _generate(0, 0, n, '')
+   return result
+};
