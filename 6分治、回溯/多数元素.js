@@ -57,4 +57,24 @@ var majorityElement3 = function(nums) {
     return candidate
 };
 
-majorityElement3([3,1,1,1,2,2,1])
+var isCovered = function(ranges, left, right) {
+    let n = ranges.length
+    let set = new Set()
+    for(let i=0;i<n;i++) {
+        let L = n[i][0]
+        let R = n[i][1]
+        while(L <= R) {
+           set.add(L)                                         
+           L++
+        }
+       
+    }
+    for(let i=left;i<=right;i++) {
+        if(!set.has(i)) {
+           return false
+        }
+    }
+    return true
+   
+};
+isCovered([[25,42],[7,14],[2,32],[25,28],[39,49],[1,50],[29,45],[18,47]],1,50)
