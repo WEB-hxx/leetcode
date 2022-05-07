@@ -13,7 +13,7 @@ let climbStairs = function(n) {
     return dp[n]
 }
 
-var climbStairs = function(n) {
+var climbStairs2 = function(n) {
     if(n==0 || n == 1 || n==2) return n
     let men = new Array(n)
     men[0] = 1
@@ -24,7 +24,7 @@ var climbStairs = function(n) {
     return men[n-1]
 }
 
-var climbStairs = function(n) {
+var climbStairs3 = function(n) {
     let p=0,q=0,r=1;
     for(let i=1;i<=n;++i) {
         p=q;

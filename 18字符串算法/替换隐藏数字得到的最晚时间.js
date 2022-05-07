@@ -20,4 +20,40 @@ var maximumTime = function(time) {
     return arr.join('')
    
 };
-maximumTime("1?:22")
+
+
+var maximumTime2 = function(time) {
+    const map = { 
+        0: 2, 
+        1: 9, 
+        3: 5, 
+        4: 9
+    };
+    // console.log(map[1])
+    return time.replace(/\?/g,(i, index, $) => {
+    //     console.log(i, index, $)
+      if (index === 1 && ($[0] == 2 || $[0] == "?")){
+        return 3;
+      }
+      if (index === 0 && $[1] >=4) {
+       
+        return 1;
+      };
+    
+      return map[index];
+    })
+  };
+  
+console.log(maximumTime2("?4:59"))
+
+
+var p = new Promise((reslove,reject)=>{
+    const s=888
+    setTimeout(()=>{
+       reslove(s)      
+    })
+})
+
+p.then((res)=>{
+  console.log(res)
+})
