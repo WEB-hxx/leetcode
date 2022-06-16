@@ -31,7 +31,7 @@ var maximumTime2 = function(time) {
     };
     // console.log(map[1])
     return time.replace(/\?/g,(i, index, $) => {
-    //     console.log(i, index, $)
+        console.log(i, index, $)
       if (index === 1 && ($[0] == 2 || $[0] == "?")){
         return 3;
       }
@@ -44,7 +44,7 @@ var maximumTime2 = function(time) {
     })
   };
   
-console.log(maximumTime2("?4:59"))
+console.log(maximumTime2("?4:5?"))
 
 
 var p = new Promise((reslove,reject)=>{

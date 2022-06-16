@@ -34,6 +34,7 @@ var majorityElement = function(nums) {
 
 var majorityElement = function(nums) {
     var obj = {};
+    // [3,2,3]
     for(var i = 0; i < nums.length; i++){
         obj[nums[i]] = obj[nums[i]] + 1 || 1;
         if(obj[nums[i]] > nums.length / 2)  return nums[i];
@@ -48,33 +49,35 @@ var majorityElement3 = function(nums) {
     let count = 0, candidate = 0
     
     for (let num of nums) {
+        console.log(num)
         if (count == 0) {
             candidate = num
+            console.log('sd',candidate)
         }
         count += num == candidate ? 1 : -1
-        console.log(count)
+        
     }
     return candidate
 };
 
-var isCovered = function(ranges, left, right) {
-    let n = ranges.length
-    let set = new Set()
-    for(let i=0;i<n;i++) {
-        let L = n[i][0]
-        let R = n[i][1]
-        while(L <= R) {
-           set.add(L)                                         
-           L++
-        }
+// var isCovered = function(ranges, left, right) {
+//     let n = ranges.length
+//     let set = new Set()
+//     for(let i=0;i<n;i++) {
+//         let L = n[i][0]
+//         let R = n[i][1]
+//         while(L <= R) {
+//            set.add(L)                                         
+//            L++
+//         }
        
-    }
-    for(let i=left;i<=right;i++) {
-        if(!set.has(i)) {
-           return false
-        }
-    }
-    return true
+//     }
+//     for(let i=left;i<=right;i++) {
+//         if(!set.has(i)) {
+//            return false
+//         }
+//     }
+//     return true
    
-};
-isCovered([[25,42],[7,14],[2,32],[25,28],[39,49],[1,50],[29,45],[18,47]],1,50)
+// };
+majorityElement3([3,2,3])
