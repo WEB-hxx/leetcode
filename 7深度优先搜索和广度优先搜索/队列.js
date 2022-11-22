@@ -112,3 +112,92 @@ var maxAreaOfIsland = function(grid) {
 
 
 
+var hardestWorker = function(n, logs) {
+    let res = []
+    let res2 = []
+    for(let i=0;i<logs.length-1;i++){      
+        let nums = logs[i+1][1]-logs[i][1]
+        res.push(nums)
+   }
+   res.unshift(logs[0][1])
+   let max = Math.max(...res)
+   for(let k=0;k<res.length;k++){
+      if(res[k]===max){
+         res2.push(k)
+      }
+   }
+   if(res2.length===1){
+    console.log(logs[res[0]] )
+     return logs[res2[0]][0] 
+    
+   }else{
+      let min = n
+      for(let i=0;i<res2.length;i++){
+         min = Math.min(logs[res2[i]][0], min)
+      }
+      console.log(min)
+      return min
+   }
+
+   
+};
+
+var findArray = function(pref) {
+   if(pref.length===1) return pref
+   let res = []
+   for(let i=0;i<pref.length-1;i++){
+      res.push(pref[i+1]^pref[i])
+   }
+   res.unshift(pref[0])
+   return res
+};
+
+
+var robotWithString = function(s) {
+    let s1 = s.split('')
+    let t = []
+    let p = []
+    for(let i=0;i<3;i++){
+        t.push(s1.shift())
+    }
+    for(let i=0;i<3;i++){
+        p.push(t.shift())
+    }
+
+    console.log(s1,t,p)
+};
+
+/**
+ * @param {string} pattern
+ * @param {string} s
+ * @return {boolean}
+ */
+ var wordPattern = function(pattern, s) {
+    var arr=s.split(' ')     //把s转换成数组
+    if(pattern.length!==arr.length) return false //pattern和arr的长度不相等时，false
+    for(let i=0;i<pattern.length;i++){    //当pattern和arr的长度相等时
+        console.log(pattern.indexOf(pattern[i]),arr[i])
+        if(pattern.indexOf(pattern[i])!=arr.indexOf(arr[i])){
+            return false
+        }
+    }     
+    return true
+};
+
+
+
+var maxRepeating = function(sequence, word) {
+    let k = 0, n = sequence.length, str = word
+    while (str.length <= n) {
+      if (sequence.indexOf(str) === -1) {
+        break
+      }
+      console.log(str)
+      ++k
+      str += word
+    }
+    console.log(k)
+    return k
+};
+
+maxRepeating("ababc", "ab")

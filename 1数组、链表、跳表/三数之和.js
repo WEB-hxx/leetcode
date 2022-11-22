@@ -5,7 +5,7 @@
 // 输入：nums = [-1,0,1,2,-1,-4]
 // 输出：[[-1,-1,2],[-1,0,1]]
 
-var threeSum = function(nums) {
+var threeSum3 = function(nums) {
    nums.sort((a,b)=>a-b)
    const result = []
    for(let i=0; i<nums.length;i++) {
@@ -14,8 +14,8 @@ var threeSum = function(nums) {
            sum = nums[i]+nums[low]+nums[high]
            if(sum === 0) {
                result.push([nums[i],nums[low],nums[high]])
-               while(nums[low+1] === nums[low]) low++
-               while(nums[high-1] === nums[high]) high--
+            //    while(nums[low+1] === nums[low]) low++
+            //    while(nums[high-1] === nums[high]) high--
                low++
                high--
            } else if(sum<0){
@@ -24,37 +24,30 @@ var threeSum = function(nums) {
                high--;
            }
        }
-       while(nums[i+1] === nums[i]) i++
+    //    while(nums[i+1] === nums[i]) i++
    }
+//    console.log(result)
    return result
 };
+threeSum3( [-1,0,1,2,-1,-4])
 
+ let result = [[-1,-1,2],[-1,0,1],[-1,0,1]]
+let ss = [...new Set(result)]
+console.log(ss)
+
+// 暴力法
 var threeSum = function(nums) {
-    var sets = [];
-    if (nums.length < 3 || nums === null) return [];
-    nums = nums.sort((a,b) => a-b);
-    for (var i=0; i < nums.length; i++) {
-        if (i > 0 && nums[i] === nums[i-1]) continue;
-        var target = 0 - nums[i];
-        var j = i+1;
-        var k = nums.length - 1;
-        while (j < k) {
-            if (nums[j] + nums[k] === target) {
-                sets.push([nums[i], nums[j], nums[k]]);
-                while (j < k && nums[j] === nums[j+1]) j++;
-                while (j < k && nums[k] === nums[k-1]) k--;
-                j++;
-                k--;
-            }
-            else if (nums[j] + nums[k] < target) {
-                j++;
-            }
-            else {
-                k--;
+   let res = []
+   for(let i=0;i<nums.length-2;i++){
+     for(let j=i+1;j<nums.length-1;j++){
+        for(let k=j+1;k<nums.length;k++){
+            if(nums[i]+nums[j]+nums[k]==0){
+               res.push([nums[i],nums[j],nums[k]])
             }
         }
-    }
-    return sets;
+     }
+   }
+   return res
 };
 
 

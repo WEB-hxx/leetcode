@@ -75,7 +75,68 @@ let rotate = function(nums, k) {
     reverse(nums, 0, k - 1);
  
     reverse(nums, k, nums.length - 1);
-    console.log(nums)
+    // console.log(nums)
     // return nums;
 };
 rotate( [1,2,3,4,5,6,7],2)
+
+
+
+var moveZeroes = function(nums) {
+    let j = 0;
+    for(let i =0; i<nums.length;i++){
+        if(nums[i]!==0){
+            nums[j]=nums[i]
+            if(i!=j){
+                nums[i] = 0
+            }
+            j++
+        }
+    }
+    console.log(nums)
+    return nums
+};
+
+var maxArea = function(a) {
+    let maxArea = 0
+    for(let i=0,j=a.length-1;i<j;){
+           let minHieht = a[i] < a[j] ? a[i++] : a[j--]
+           let area = (j-i+1) * minHieht
+         
+           maxArea = Math.max(area, maxArea)
+        
+    }
+    return maxArea
+ };
+
+ maxArea([1,8,6,2,5,4,8,3,7])
+
+
+ let climbStairs = function(n) {
+    if(n == 0 || n == 1 || n == 2){return n;}
+     let mem = new Array(n);
+     mem[0] = 1;
+     mem[1] = 2; 
+     
+     for(let i = 2; i < n; i++){
+         mem[i] = mem[i-1] + mem[i-2];
+     }
+     console.log(mem)
+     return mem[n-1];
+ }
+
+ var removeDuplicates = function(nums) {
+    if(nums.length == 0){return 0;}
+    let slow = 0, fast = 1;
+    while(fast < nums.length){
+        if(nums[fast] != nums[slow]){
+            slow++
+            nums[slow] = nums[fast];
+        }
+        fast++
+    }
+    console.log(nums.splice(0,slow+1))
+    return slow + 1;
+};
+
+removeDuplicates([0,0,1,1,1,2,2,3,3,4])
